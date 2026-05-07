@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.navBar {
+    display: flex;
+    padding: 5px;
+    background-color: rgb(39, 148, 70);
+  justify-content: center;
+  
+}
+
+.btn-nav {
+  margin: 20px;
+  font-size: large;
+  display: flex;
+  background-color: rgb(42, 42, 42);
+  border: 2px black solid;
+  border-radius: 10px;
+  color: white;
+  
+}
+
+.show {
+    animation: reveal 3s ease-in;
+}
+
