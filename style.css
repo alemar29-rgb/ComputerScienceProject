@@ -1,55 +1,46 @@
-:root {
-    --brand-green: #279446;
-    --dark-grey: #2a2a2a;
-    --light-grey: #f4f4f4;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    background-color: var(--light-grey);
+    /* Light Grey Background */
+    background-color: rgba(244, 244, 244, 1); 
 }
 
-.hidden {
-    display: none;
-}
-
-/* Navigation */
 .navBar {
     display: flex;
     padding: 10px;
-    background-color: var(--brand-green);
+    /* Your original Brand Green */
+    background-color: rgb(27, 179, 70); 
     justify-content: center;
-    gap: 15px; /* Modern way to space items */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 25%;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .btn-nav {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: var(--dark-grey);
-    border: 1px solid #000;
+    /* Dark Grey Button */
+    background-color: rgba(42, 42, 42, 1); 
+    border: 1px solid rgba(0, 0, 0, 1);
     border-radius: 8px;
-    color: white;
+    color: rgba(255, 255, 255, 1);
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: background-color 0.2s;
 }
 
 .btn-nav:hover {
-    background-color: #444;
-    transform: translateY(-2px);
+    
+    background-color: rgba(68, 68, 68, 1); 
 }
 
-.btn-nav:active {
-    transform: translateY(0);
-}
-
-/* Content Layout */
 .container {
     max-width: 1000px;
     margin: 40px auto;
@@ -57,34 +48,83 @@ body {
     text-align: center;
 }
 
-.title {
-    margin-bottom: 20px;
-    color: var(--dark-grey);
-}
-
-/* Search Bar Styling */
 .search-bar input {
     width: 100%;
     max-width: 400px;
     padding: 12px 20px;
     border-radius: 25px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.3s;
+    border: 1px solid rgba(204, 204, 204, 1);
 }
 
-.search-bar input:focus {
-    border-color: var(--brand-green);
+.hidden {
+    display: none;
 }
 
-/* Animations */
-@keyframes reveal {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
 
-.show {
-    display: block !important;
-    animation: reveal 0.5s ease-out; /* Shortened time for better UX */
+
+.dropdownMenu {
+    display: none; 
+    position: absolute;
+    background-color: rgba(42, 42, 42, 1);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 10;
+    margin-top: 5px;
+    padding: 5px 0;
+}
+
+.dropdown-toggle {
+    position: absolute;
+    padding: 10px 20px;
+    font-size: 16px;
+    /* Dark Grey Button */
+    background-color: rgba(42, 42, 42, 1); 
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropDown-item {
+    color: rgba(255, 255, 255, 1);
+    padding: 10px 15px;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+}
+
+
+.show-menu{
+    display: block;
+}
+.dropDown-item:hover {
+    background-color: rgba(68, 68, 68, 1);
+}
+
+
+.dropdown:hover .dropdownMenu {
+    display: block;
+}
+
+.title {
+    justify-self: center;
+font-size: xx-large;
+margin-top: 10px;
+}
+
+header {
+    background-color: rgb(14, 147, 65);
+    margin-bottom: 5px;
+    margin-top: 5px;
+    justify-content: center;
+    align-content: center;
+
 }

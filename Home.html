@@ -1,38 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SoundScout</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <header>
+<h1 class="title">SoundScout</h1>
+   
     <nav class="navBar">
         <button class="btn-nav" id="btn-related-artists">Related Artists</button>
         <button class="btn-nav" id="btn-mood-songs">Mood Songs</button>
         <button class="btn-nav" id="btn-related-songs">Related Songs</button>
     </nav>
+ </header>
 
     <main class="container">
-        <div class="content-section related_artist hidden">
+        <div class="content-section related-artist hidden">
             <h2 class="title">Related Artists</h2>
             <div class="search-bar">
-                <input type="text" placeholder="Search for an artist...">
+                <input type="text" placeholder="Search for an artist..." id="artist-search">
+
             </div>
-            <div class="card-holder">
-                </div>
+            <div class="artist-card-holder" id="artistHolder">
+
+            </div>
         </div>
 
-        <div class="content-section mood_song hidden">
+        <div class="content-section mood-song hidden">
             <h2 class="title">Mood Song</h2>
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Select Mood</button>
+                <div class="dropdownMenu">
+                    <a href="#" class="dropDown-item">Sad</a>
+                    <a href="#" class="dropDown-item">Happy</a>
+                    <a href="#" class="dropDown-item">Energetic</a>
+                    <a href="#" class="dropDown-item"></a>
+                    <a href="#" class="dropDown-item"></a>
+
+                </div>
+            </div>
         </div>
 
-        <div class="content-section related_songs hidden">
+        <div class="content-section related-songs hidden">
             <h2 class="title">Related Songs</h2>
+            <div class="search-bar">
+                <input type="Search a song...." id="song-search">
+            </div>
+            <div class="song-card-container" id="songCard-container">
+
+            </div>
         </div>
     </main>
 
     <script src="javascript/script.js"></script>
     <script src="javascript/localStorage.js"></script>
 </body>
+
 </html>
