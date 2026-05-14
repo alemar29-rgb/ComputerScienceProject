@@ -6,20 +6,21 @@
 }
 
 body {
-    /* Light Grey Background */
-    background-color: rgba(244, 244, 244, 1); 
+    /* Light Background */
+    background:linear-gradient(270deg, #1f6e23 0%, #138f19 100%) ;
+   
 }
 
 .navBar {
     display: flex;
     padding: 10px;
     /* Your original Brand Green */
-    background-color: rgb(27, 179, 70); 
+    background-color: rgb(18, 176, 63); 
     justify-content: center;
     gap: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 25%;
-    padding: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 2%; 
+    padding: 12px 25px 12px 25px;
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -81,16 +82,16 @@ body {
 }
 
 .dropdown-toggle {
-    position: absolute;
+    
     padding: 10px 20px;
     font-size: 16px;
-    /* Dark Grey Button */
     background-color: rgba(42, 42, 42, 1); 
     border: 1px solid rgba(0, 0, 0, 1);
     border-radius: 8px;
     color: rgba(255, 255, 255, 1);
     cursor: pointer;
     transition: background-color 0.2s;
+    
 }
 
 .dropDown-item {
@@ -115,16 +116,28 @@ body {
 }
 
 .title {
-    justify-self: center;
-font-size: xx-large;
-margin-top: 10px;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin: 3px;              
 }
-
 header {
-    background-color: rgb(14, 147, 65);
-    margin-bottom: 5px;
-    margin-top: 5px;
-    justify-content: center;
+    background-color: #0e9341;
+    background:linear-gradient(300deg, #0e9341 0%, #47c64c 100%) ;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    justify-content: center; 
+    justify-items: center;
     align-content: center;
+    align-items: center;
+    min-height: 80px;       
+    color: white;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 
 }
+
+
+ .btn-nav:hover {
+   transform: translateY(2px);
+    
+
+} 

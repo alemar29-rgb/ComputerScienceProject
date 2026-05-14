@@ -18,6 +18,9 @@
         <button class="btn-nav" id="btn-related-songs">Related Songs</button>
     </nav>
  </header>
+<div class="switch-darkmode">
+    <button></button>
+</div>
 
     <main class="container">
         <div class="content-section related-artist hidden">
@@ -40,8 +43,8 @@
                     <a href="#" class="dropDown-item">Sad</a>
                     <a href="#" class="dropDown-item">Happy</a>
                     <a href="#" class="dropDown-item">Energetic</a>
-                    <a href="#" class="dropDown-item"></a>
-                    <a href="#" class="dropDown-item"></a>
+                    <a href="#" class="dropDown-item">Depressed</a>
+                    <a href="#" class="dropDown-item">Angry</a>
 
                 </div>
             </div>
@@ -50,7 +53,7 @@
         <div class="content-section related-songs hidden">
             <h2 class="title">Related Songs</h2>
             <div class="search-bar">
-                <input type="Search a song...." id="song-search">
+                <input type="text" id="song-search" placeholder="Search for a song...">
             </div>
             <div class="song-card-container" id="songCard-container">
 
@@ -60,6 +63,7 @@
 
     <script src="javascript/script.js"></script>
     <script src="javascript/localStorage.js"></script>
+    <script src="javascript/api.js"></script>
 </body>
 
 </html>
