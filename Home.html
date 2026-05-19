@@ -10,42 +10,45 @@
 
 <body>
     <header>
-<h1 class="title">SoundScout</h1>
+        <div class="header-top">
+            <h1 class="title">SoundScout</h1>
+            <div class="switch-darkmode">
+                <button id="darkmode-toggle" aria-label="Toggle Dark Mode"></button>
+            </div>
+        </div>
    
-    <nav class="navBar">
-        <button class="btn-nav" id="btn-related-artists">Related Artists</button>
-        <button class="btn-nav" id="btn-mood-songs">Mood Songs</button>
-        <button class="btn-nav" id="btn-related-songs">Related Songs</button>
-    </nav>
- </header>
-<div class="switch-darkmode">
-    <button></button>
-</div>
+        <nav class="navBar">
+            <button class="btn-nav" id="btn-related-artists">Related Artists</button>
+            <button class="btn-nav" id="btn-mood-songs">Mood Songs</button>
+            <button class="btn-nav" id="btn-related-songs">Related Songs</button>
+            <button class="btn-nav" id="btn-song-search">Song Search</button>
+            <button class="btn-nav" id="btn-saved-stuff">Saved Stuff</button>
+        </nav>
+    </header>
 
     <main class="container">
-        <div class="content-section related-artist hidden">
+        <div class="content-section related-artist">
             <h2 class="title">Related Artists</h2>
             <div class="search-bar">
                 <input type="text" placeholder="Search for an artist..." id="artist-search">
-
             </div>
-            <div class="artist-card-holder" id="artistHolder">
-
-            </div>
+            <div class="artist-card-holder" id="artistHolder"></div>
         </div>
 
         <div class="content-section mood-song hidden">
             <h2 class="title">Mood Song</h2>
             <div class="dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Select Mood</button>
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                    Select Mood
+                </button>
                 <div class="dropdownMenu">
                     <a href="#" class="dropDown-item">Sad</a>
                     <a href="#" class="dropDown-item">Happy</a>
                     <a href="#" class="dropDown-item">Energetic</a>
                     <a href="#" class="dropDown-item">Depressed</a>
                     <a href="#" class="dropDown-item">Angry</a>
-
+                    <a href="#" class="dropDown-item">Anxious</a>
+                    <a href="#" class="dropDown-item"></a>
                 </div>
             </div>
         </div>
@@ -55,15 +58,27 @@
             <div class="search-bar">
                 <input type="text" id="song-search" placeholder="Search for a song...">
             </div>
-            <div class="song-card-container" id="songCard-container">
+            <div class="song-card-container" id="songCard-container"></div>
+        </div>
 
+        <div class="content-section song-search-section hidden">
+            <h2 class="title">Song Search</h2>
+            <div class="search-bar">
+                <input type="text" id="direct-song-input" placeholder="Search song title directly...">
             </div>
+            <div class="song-card-container" id="directSongHolder"></div>
+        </div>
+
+        <div class="content-section saved-stuff-section hidden">
+            <h2 class="title">Saved Stuff</h2>
+            <p class="section-subtitle">Your collection of bookmarked tracks and artists</p>
+            <div class="saved-container" id="savedItemsHolder"></div>
         </div>
     </main>
 
-    <script src="javascript/script.js"></script>
-    <script src="javascript/localStorage.js"></script>
     <script src="javascript/api.js"></script>
+    <script src="javascript/localStorage.js"></script>
+    <script src="javascript/script.js"></script>
 </body>
 
 </html>
