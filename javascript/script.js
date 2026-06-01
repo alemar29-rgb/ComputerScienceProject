@@ -47,17 +47,44 @@ if (dropdownBtn && dropdownMenu) {
 // Update button label and close menu when a mood is selected
 const moodItems = document.querySelectorAll('.dropDown-item');
 
-moodItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (dropdownBtn && dropdownMenu) {
-            dropdownBtn.innerText = item.innerText;
-            dropdownMenu.classList.remove('show-menu');
-        }
-        console.log("User feels: " + item.innerText);
-    });
-});
+const moodSongHolder = document.getElementById('moodSongHolder')
 
+moodItems.forEach(item => {
+    item.addEventListener('click', async (e) => {
+        e.preventDefault()
+        if (dropdownBtn && dropdownMenu) {
+            dropdownBtn.innerText = item.innerText
+            dropdownMenu.classList.remove('show-menu')
+        }
+
+        if (!moodSongHolder) return
+        moodSongHolder.innerHTML = 'Loading songs...'
+
+        const results = await getSongsByMood(item.innerText)
+        moodSongHolder.innerHTML = ''
+
+        if (results.length === 0) {
+            moodSongHolder.innerHTML = '<p>No songs found for this mood.</p>'
+            return
+        }
+
+        results.forEach(song => {
+            const card = document.createElement('div')
+            card.className = 'song-card'
+            card.innerHTML = `
+                <img src="${song.image}" alt="${song.name}" class="song-card-img">
+                <p><strong>${song.name}</strong></p>
+                <p class="song-card-artist">${song.artist}</p>
+                <button class="save-btn">🔖 Save</button>
+            `
+            card.querySelector('.save-btn').addEventListener('click', () => {
+                saveItem({ name: song.name, artist: song.artist, image: song.image, type: 'song' })
+                card.querySelector('.save-btn').innerText = '✅ Saved'
+            })
+            moodSongHolder.appendChild(card)
+        })
+    })
+})
 
 // --- ARTIST SEARCH ---
 
