@@ -1,13 +1,13 @@
 // --- NAVIGATION ---
-
-// Grab all nav buttons and their matching content sections (order must match HTML)
+// Grab all nav buttons
 const buttons = document.querySelectorAll('.navBar button');
+
+// Explicitly match the sections to the buttons in your HTML order
 const sections = [
-    document.querySelector('.related-artist'),
-    document.querySelector('.mood-song'),
-    document.querySelector('.related-songs'),
-    document.querySelector('.song-search-section'),
-    document.querySelector('.saved-stuff-section')
+    document.querySelector('.related-artist'),      // Button 1: Related Artists
+    document.querySelector('.mood-song'),           // Button 2: Mood Songs
+    document.querySelector('.related-songs'),       // Button 3: Related Songs
+    document.querySelector('.saved-stuff-section')  // Button 4: Saved Stuff
 ];
 
 // Hides all sections, then reveals only the target one
@@ -15,7 +15,14 @@ function showSection(targetSection) {
     sections.forEach(section => {
         if (section) section.classList.add('hidden');
     });
-    if (targetSection) targetSection.classList.remove('hidden');
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+        
+        // Force the local storage storage layout to print fresh data when opened
+        if (targetSection.classList.contains('saved-stuff-section')) {
+            renderSavedItems();
+        }
+    }
 }
 
 // Each nav button shows the section at the same index
@@ -24,7 +31,6 @@ buttons.forEach((btn, index) => {
         if (sections[index]) showSection(sections[index]);
     });
 });
-
 
 // --- DROPDOWN MENU ---
 
