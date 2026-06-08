@@ -1,3 +1,59 @@
+// --- LOCAL STORAGE ENGINE ---
+function getSavedItems() {
+    const saved = localStorage.getItem('soundScout_saved');
+    return saved ? JSON.parse(saved) : [];
+}
+
+function saveItem(item) {
+    let savedItems = getSavedItems();
+    const exists = savedItems.some(i => i.name === item.name && (i.artist === item.artist || i.type === 'artist'));
+    
+    if (!exists) {
+        savedItems.push(item);
+        localStorage.setItem('soundScout_saved', JSON.stringify(savedItems));
+        renderSavedItems();
+    }
+}
+
+function deleteItem(name, artist) {
+    let savedItems = getSavedItems();
+    savedItems = savedItems.filter(item => !(item.name === name && item.artist === artist));
+    localStorage.setItem('soundScout_saved', JSON.stringify(savedItems));
+    renderSavedItems();
+}
+
+function renderSavedItems() {
+    const container = document.getElementById('savedItemsHolder');
+    if (!container) return;
+
+    const savedItems = getSavedItems();
+    container.innerHTML = '';
+
+    if (savedItems.length === 0) {
+        container.innerHTML = `<p class="no-saves">Your collection is empty. Start saving some music!</p>`;
+        return;
+    }
+
+    savedItems.forEach(item => {
+        const card = document.createElement('div');
+        card.className = item.type === 'artist' ? 'artist-card' : 'song-card';
+        
+        card.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="${item.type === 'artist' ? 'artist-card-img' : 'song-card-img'}">
+            <p><strong>${item.name}</strong></p>
+            ${item.artist ? `<p class="song-card-artist">${item.artist}</p>` : ''}
+            <button class="delete-btn">🗑️ Remove</button>
+        `;
+
+        card.querySelector('.delete-btn').addEventListener('click', () => {
+            deleteItem(item.name, item.artist);
+        });
+
+        container.appendChild(card);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', renderSavedItems);
 const LASTFM_API_KEY = 'ad9c9901882e2f3ed3c0b99ffa648944';
 
 // --- ARTIST SEARCH ---
