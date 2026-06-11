@@ -209,3 +209,31 @@ if (directSongInput && directSongHolder) {
         });
     });
 }
+
+//DARK MODE
+const themeToggleBtn = document.getElementById('theme-toggle');
+
+// Check localStorage on page load to see if the user previously chose Dark Mode
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+    themeToggleBtn.textContent = '☀️'; // Change icon to sun
+}
+
+// Handle the button click
+themeToggleBtn.addEventListener('click', () => {
+    // Toggle the class on the body
+    document.body.classList.toggle('dark-theme');
+    
+    // Check if dark mode is now active
+    let theme = 'light';
+    if (document.body.classList.contains('dark-theme')) {
+        theme = 'dark';
+        themeToggleBtn.textContent = '☀️'; // Sun icon for switching back to light
+    } else {
+        themeToggleBtn.textContent = '🌙'; // Moon icon for switching to dark
+    }
+    
+    // Save preference to local storage
+    localStorage.setItem('theme', theme);
+});
