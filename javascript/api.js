@@ -191,3 +191,71 @@ async function searchRelatedSongs(query) {
         }
     })
 }
+
+// Run an observer to automatically inject the buttons into newly created cards
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+            if (node.nodeType !== 1) return; // Only element nodes
+            
+            // Check if it's an artist card and doesn't have a button yet
+            if (node.classList.contains('artist-card') && !node.querySelector('.save-artist-btn')) {
+                const btn = document.createElement('button');
+                btn.className = 'save-artist-btn';
+                btn.style.marginTop = '10px';
+                btn.innerText = '🔖 Save Artist';
+                node.appendChild(btn);
+            }
+            
+            // Check if it's a related song card and doesn't have a button yet
+            if (node.classList.contains('song-card') && !node.closest('#moodSongHolder') && !node.querySelector('.save-song-btn')) {
+                const btn = document.createElement('button');
+                btn.className = 'save-song-btn';
+                btn.style.marginTop = '10px';
+                btn.innerText = '🔖 Save Song';
+                node.appendChild(btn);
+            }
+        });
+    });
+});
+
+// Start watching the page containers for dynamic updates
+const config = { childList: true, subtree: true };
+if (document.getElementById('artistHolder')) observer.observe(document.getElementById('artistHolder'), config);
+if (document.getElementById('songCard-container')) observer.observe(document.getElementById('songCard-container'), config);
+
+// Handle the background clicks for any dynamically injected buttons
+document.addEventListener('click', (e) => {
+    // 1. Handle Artist Saves
+    if (e.target.classList.contains('save-artist-btn')) {
+        const card = e.target.closest('.artist-card');
+        const name = card.querySelector('p').innerText.trim();
+        const image = card.querySelector('img').src;
+
+        saveItem({
+            name: name,
+            artist: "",
+            image: image,
+            type: 'artist'
+        });
+
+        e.target.innerText = '✅ Saved';
+    }
+
+    // 2. Handle Related Song Saves
+    if (e.target.classList.contains('save-song-btn')) {
+        const card = e.target.closest('.song-card');
+        const name = card.querySelector('p strong').innerText.trim();
+        const artist = card.querySelector('.song-card-artist').innerText.trim();
+        const image = card.querySelector('img').src;
+
+        saveItem({
+            name: name,
+            artist: artist,
+            image: image,
+            type: 'song'
+        });
+
+        e.target.innerText = '✅ Saved';
+    }
+});
