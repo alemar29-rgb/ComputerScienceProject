@@ -62,3 +62,20 @@ function renderSavedItems() {
 
 // Ensure local storage renders data immediately when the file executes
 document.addEventListener('DOMContentLoaded', renderSavedItems);
+
+document.getElementById('clear-storage-btn').addEventListener('click', () => {
+  if (confirm('Are you sure you want to clear all saved data?')) {
+    localStorage.clear();
+    alert('Saved Data has been cleared!');
+  }
+});
+
+// Function to save the chosen language to local storage
+function saveLanguageChoice(lang) {
+  localStorage.setItem('selectedLanguage', lang);
+}
+
+// Function to retrieve the saved language choice
+function getSavedLanguage() {
+  return localStorage.getItem('selectedLanguage') || 'en'; // Defaults to English
+}
